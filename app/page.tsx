@@ -23,12 +23,12 @@ const STEPS = [
 ];
 
 const PRODUCTS = [
-  { name: "SPC 地板",      color: "#5F5440" },
-  { name: "衛浴設備",      color: "#31424A" },
-  { name: "廚具系統",      color: "#2F3133" },
-  { name: "系統櫃 / 櫃體", color: "#514637" },
-  { name: "壁板 / 軟裝",   color: "#46533E" },
-  { name: "住宅配套",      color: "#5B484D" },
+  { name: "SPC 地板",      color: "#5F5440", src: "/images/products/product-floor.jpg",         pos: "center" },
+  { name: "衛浴設備",      color: "#31424A", src: "/images/products/product-bathroom.jpg",      pos: "center" },
+  { name: "廚具系統",      color: "#2F3133", src: "/images/products/product-kitchen.jpg",       pos: "center" },
+  { name: "系統櫃 / 櫃體", color: "#514637", src: "/images/products/product-cabinet.jpg",       pos: "center top" },
+  { name: "壁板 / 軟裝",   color: "#46533E", src: "/images/products/product-wall-panel.jpg",   pos: "center" },
+  { name: "住宅配套",      color: "#5B484D", src: "/images/products/product-home-equipment.jpg", pos: "center" },
 ];
 
 const PARTNERS = [
@@ -118,7 +118,7 @@ export default function HomePage() {
           <img
             src="/logos/valde-logo-horizontal.png"
             alt="VALDE 潤鋒"
-            style={{ height: 38, width: "auto", objectFit: "contain" }}
+            style={{ height: 40, width: "auto", objectFit: "contain" }}
             onError={(e) => {
               e.currentTarget.style.display = "none";
               const fb = e.currentTarget.nextElementSibling as HTMLElement;
@@ -313,18 +313,24 @@ export default function HomePage() {
             <div
               key={p.name}
               style={{
-                height: 150,
-                borderRadius: 3,
+                position: "relative",
+                height: 78,
+                borderRadius: 4,
                 cursor: "pointer",
+                overflow: "hidden",
                 background: p.color,
-                display: "flex",
-                alignItems: "flex-end",
-                justifyContent: "space-between",
-                padding: "22px",
               }}
             >
-              <span style={{ color: "#fff", fontSize: 16, fontWeight: 600, letterSpacing: 0.2 }}>{p.name}</span>
-              <span style={{ color: "rgba(255,255,255,0.88)", fontSize: 20, lineHeight: 1 }}>›</span>
+              <img
+                src={p.src}
+                alt={p.name}
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: p.pos }}
+              />
+              <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.40)" }} />
+              <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", justifyContent: "space-between", padding: "10px 14px" }}>
+                <span style={{ color: "#fff", fontSize: 16, fontWeight: 600, letterSpacing: 0.2 }}>{p.name}</span>
+                <span style={{ color: "rgba(255,255,255,0.85)", fontSize: 16, lineHeight: 1 }}>›</span>
+              </div>
             </div>
           ))}
         </div>
@@ -339,38 +345,39 @@ export default function HomePage() {
           <p style={{ textAlign: "center", color: MUTED, fontSize: 15, maxWidth: 620, margin: "0 auto 34px", lineHeight: 1.9 }}>
             Valde 潤鋒與 Kanlee 康勵集團深耕建材供應與落地執行，服務住宅建案、飯店與商用空間專案。
           </p>
-          <div className="partner-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
+          <div className="partner-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 10 }}>
             {PARTNERS.map(logo => (
-              <div key={logo.name} style={{ background: "#fff", border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", height: 108, padding: "18px 28px", borderRadius: 2, overflow: "hidden" }}>
+              <div key={logo.name} style={{ background: "#fff", border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", height: 92, padding: "14px 20px", borderRadius: 3 }}>
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  style={{ width: "100%", height: 72, maxWidth: 190, objectFit: "contain", display: "block", transform: "scale(1.35)", transformOrigin: "center" }}
+                  style={{ width: "100%", height: 54, objectFit: "contain", display: "block", transform: "scale(1.5)", transformOrigin: "center" }}
                   onError={(e) => {
                     e.currentTarget.style.display = "none";
                     const ph = e.currentTarget.nextElementSibling as HTMLElement;
                     if (ph) ph.style.display = "flex";
                   }}
                 />
-                <div style={{ display: "none", width: "100%", height: 44, background: "#f0f0f0", borderRadius: 3, alignItems: "center", justifyContent: "center" }} />
+                <div style={{ display: "none", width: "100%", height: 40, alignItems: "center", justifyContent: "center", fontSize: 11, color: "#aaa" }}>{logo.name}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══ VALUE PROPS ════════════════════════════════════ */}
-      <section style={{ padding: "64px 32px", maxWidth: 1280, margin: "0 auto" }}>
-        <div className="value-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32 }}>
-          {VALUES.map(item => (
-            <div key={item.title} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-              <div style={{ width: 38, height: 38, border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, borderRadius: 6 }}>
-                <div style={{ width: 14, height: 14, borderRadius: 2, background: RED, opacity: 0.7 }} />
-              </div>
-              <div>
-                <div style={{ fontSize: 14, fontWeight: 500, color: DARK, marginBottom: 6 }}>{item.title}</div>
-                <div style={{ fontSize: 13, color: BODY, lineHeight: 1.8 }}>{item.desc}</div>
-              </div>
+      {/* ══ STATS ROW ══════════════════════════════════════ */}
+      <section style={{ background: "#fff", borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}` }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
+          {[
+            { num: "10+",   label: "合作供應類型",   desc: "地板、衛浴、廚具等多品類整合" },
+            { num: "6",     label: "大住宅建材品項", desc: "涵蓋住宅主要建材需求" },
+            { num: "3",     label: "種報價版本",     desc: "初估、詳細報價、施工版本" },
+            { num: "1站式", label: "供應與交付",     desc: "從選材到案場全程協助追蹤" },
+          ].map((item, i) => (
+            <div key={item.label} style={{ padding: "40px 28px", textAlign: "center", borderRight: i < 3 ? `1px solid ${LINE}` : "none" }}>
+              <div style={{ fontSize: 40, fontWeight: 700, color: RED, marginBottom: 8, lineHeight: 1 }}>{item.num}</div>
+              <div style={{ fontSize: 15, fontWeight: 500, color: DARK, marginBottom: 5 }}>{item.label}</div>
+              <div style={{ fontSize: 13, color: MUTED, lineHeight: 1.6 }}>{item.desc}</div>
             </div>
           ))}
         </div>
