@@ -3,40 +3,39 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "蘋方-繁", sans-serif;
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   background: #fff;
   color: #1F1F1F;
   font-size: 15px;
   line-height: 1.75;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Hero 主標 ────────────────────────────── */
+/* ── Hero h1 ─────────────── reference: ~52px / 700 */
 .hero-title {
   font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-  font-size: 72px;
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: #1A1A1A;
   margin-bottom: 20px;
 }
-@media (max-width: 1024px) { .hero-title { font-size: 52px; } }
-@media (max-width: 640px)  { .hero-title { font-size: 38px; line-height: 1.15; } }
+@media (max-width: 1024px) { .hero-title { font-size: 42px; } }
+@media (max-width: 640px)  { .hero-title { font-size: 32px; line-height: 1.2; } }
 
-/* ── Section 標題 ─────────────────────────── */
+/* ── Section h2 ──────────── reference: ~28px / 700 */
 .section-title {
   font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-  font-size: 40px;
+  font-size: 28px;
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.01em;
   color: #1A1A1A;
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.3;
 }
-@media (max-width: 768px) { .section-title { font-size: 30px; } }
+@media (max-width: 640px) { .section-title { font-size: 22px; } }
 
 /* ── Mobile menu ──────────────────────────── */
 .mobile-menu {
