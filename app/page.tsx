@@ -32,16 +32,16 @@ const PRODUCTS = [
 ];
 
 const PARTNERS = [
-  { name: "遠雄建設",                src: "/logos/partners/farglory.png" },
-  { name: "國泰建設",                src: "/logos/partners/cathay.png" },
-  { name: "櫻花建設",                src: "/logos/partners/sakura.png" },
-  { name: "亞昕建設",                src: "/logos/partners/archer.png" },
-  { name: "麗寶建設",                src: "/logos/partners/lienbao.png" },
-  { name: "Sheraton Grand",         src: "/logos/partners/sheraton-grand.png" },
-  { name: "圓山大飯店",              src: "/logos/partners/grand-hotel.png" },
-  { name: "Howard 福華",             src: "/logos/partners/howard.png" },
-  { name: "Orchard Park",           src: "/logos/partners/orchard-park.png" },
-  { name: "Four Points by Sheraton", src: "/logos/partners/four-points.png" },
+  { name: "遠雄建設",                src: "/logos/partners/farglory.png",       scale: 2.0 },
+  { name: "國泰建設",                src: "/logos/partners/cathay.png",         scale: 1.8 },
+  { name: "櫻花建設",                src: "/logos/partners/sakura.png",         scale: 1.8 },
+  { name: "亞昕建設",                src: "/logos/partners/archer.png",         scale: 1.8 },
+  { name: "麗寶建設",                src: "/logos/partners/lienbao.png",        scale: 2.0 },
+  { name: "Sheraton Grand",         src: "/logos/partners/sheraton-grand.png", scale: 1.6 },
+  { name: "圓山大飯店",              src: "/logos/partners/grand-hotel.png",    scale: 1.8 },
+  { name: "Howard 福華",             src: "/logos/partners/howard.png",         scale: 1.8 },
+  { name: "Orchard Park",           src: "/logos/partners/orchard-park.png",   scale: 1.8 },
+  { name: "Four Points by Sheraton", src: "/logos/partners/four-points.png",   scale: 2.2 },
 ];
 
 const ESTIMATE_ITEMS = [
@@ -326,7 +326,7 @@ export default function HomePage() {
                 alt={p.name}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: p.pos }}
               />
-              <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.40)" }} />
+              <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.62)" }} />
               <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-end", justifyContent: "space-between", padding: "10px 14px" }}>
                 <span style={{ color: "#fff", fontSize: 16, fontWeight: 600, letterSpacing: 0.2 }}>{p.name}</span>
                 <span style={{ color: "rgba(255,255,255,0.85)", fontSize: 16, lineHeight: 1 }}>›</span>
@@ -347,11 +347,11 @@ export default function HomePage() {
           </p>
           <div className="partner-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 10 }}>
             {PARTNERS.map(logo => (
-              <div key={logo.name} style={{ background: "#fff", border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", height: 92, padding: "14px 20px", borderRadius: 3 }}>
+              <div key={logo.name} style={{ background: "#fff", border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", height: 92, padding: "14px 20px", borderRadius: 3, overflow: "hidden" }}>
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  style={{ width: "100%", height: 54, objectFit: "contain", display: "block", transform: "scale(1.5)", transformOrigin: "center" }}
+                  style={{ width: "100%", height: 54, objectFit: "contain", display: "block", transform: `scale(${logo.scale})`, transformOrigin: "center" }}
                   onError={(e) => {
                     e.currentTarget.style.display = "none";
                     const ph = e.currentTarget.nextElementSibling as HTMLElement;
