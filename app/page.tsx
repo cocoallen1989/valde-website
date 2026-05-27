@@ -159,7 +159,7 @@ export default function HomePage() {
         <img
           src="/images/hero/hero-interior.jpg"
           alt="室內建材背景"
-          style={{ position: "absolute", right: 0, top: 0, width: "58%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.34 }}
+          style={{ position: "absolute", right: 0, top: 0, width: "58%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.22 }}
         />
         <div className="hero-grid" style={{ maxWidth: 1280, margin: "0 auto", padding: "68px 32px 76px", position: "relative", display: "grid", gridTemplateColumns: "5fr 7fr", gap: 40, alignItems: "flex-start" }}>
 
@@ -310,7 +310,7 @@ export default function HomePage() {
         </h2>
         <div className="product-grid" style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 8 }}>
           {PRODUCTS.map(p => (
-            <div key={p.name} style={{ position: "relative", height: 180, overflow: "hidden", borderRadius: 4, cursor: "pointer" }}>
+            <div key={p.name} style={{ position: "relative", height: 140, overflow: "hidden", borderRadius: 4, cursor: "pointer" }}>
               {/* Product image from /images/products/ */}
               <img
                 src={p.src}
@@ -338,11 +338,11 @@ export default function HomePage() {
           </p>
           <div className="partner-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
             {PARTNERS.map(logo => (
-              <div key={logo.name} style={{ background: "#fff", border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", height: 92, padding: "14px 20px", borderRadius: 2 }}>
+              <div key={logo.name} style={{ background: "#fff", border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", height: 88, padding: "8px 12px", borderRadius: 2, overflow: "hidden" }}>
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  style={{ maxHeight: 48, maxWidth: 160, objectFit: "contain" }}
+                  style={{ width: "100%", height: "100%", objectFit: "contain", transform: "scale(1.6)", transformOrigin: "center" }}
                   onError={(e) => {
                     e.currentTarget.style.display = "none";
                     const ph = e.currentTarget.nextElementSibling as HTMLElement;
@@ -356,18 +356,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ VALUE PROPS ════════════════════════════════════ */}
-      <section style={{ padding: "64px 32px", maxWidth: 1280, margin: "0 auto" }}>
-        <div className="value-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 32 }}>
-          {VALUES.map(item => (
-            <div key={item.title} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-              <div style={{ width: 38, height: 38, border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, borderRadius: 6 }}>
-                <div style={{ width: 14, height: 14, borderRadius: 2, background: RED, opacity: 0.7 }} />
-              </div>
-              <div>
-                <div style={{ fontSize: 15, fontWeight: 500, color: DARK, marginBottom: 6 }}>{item.title}</div>
-                <div style={{ fontSize: 15, color: BODY, lineHeight: 1.8 }}>{item.desc}</div>
-              </div>
+      {/* ══ STATS ROW ══════════════════════════════════════ */}
+      <section style={{ background: "#fff", borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}` }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)" }}>
+          {[
+            { num: "10+", label: "合作供應類型", desc: "地板、衛浴、廚具等多品類整合" },
+            { num: "6",   label: "大住宅建材品項", desc: "涵蓋住宅主要建材需求" },
+            { num: "3",   label: "種報價版本", desc: "初估、詳細報價、施工版本" },
+            { num: "1站式", label: "供應與交付", desc: "從選材到案場全程協助追蹤" },
+          ].map((item, i) => (
+            <div key={item.label} style={{
+              padding: "40px 28px",
+              textAlign: "center",
+              borderRight: i < 3 ? `1px solid ${LINE}` : "none",
+            }}>
+              <div style={{ fontSize: 42, fontWeight: 700, color: RED, marginBottom: 8, lineHeight: 1 }}>{item.num}</div>
+              <div style={{ fontSize: 16, fontWeight: 500, color: DARK, marginBottom: 6 }}>{item.label}</div>
+              <div style={{ fontSize: 13, color: MUTED, lineHeight: 1.6 }}>{item.desc}</div>
             </div>
           ))}
         </div>
