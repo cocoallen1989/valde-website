@@ -114,18 +114,15 @@ export default function HomePage() {
       {/* ══ NAV ══════════════════════════════════════════ */}
       <nav style={{ background: "#fff", borderBottom: `1px solid ${LINE}`, position: "sticky", top: 0, zIndex: 50, height: 72 }}>
         <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px", height: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          {/* Header logo: /logos/valde-logo-horizontal.png */}
-          <img
-            src="/logos/valde-logo-horizontal.png"
-            alt="VALDE 潤鋒"
-            style={{ height: 38, width: "auto", objectFit: "contain" }}
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-              const fb = e.currentTarget.nextElementSibling as HTMLElement;
-              if (fb) fb.style.display = "block";
-            }}
-          />
-          <span style={{ display: "none", fontSize: 16, fontWeight: 500, color: DARK, letterSpacing: 1 }}>VALDE 潤鋒</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <img
+              src="/logos/valde-logo-horizontal.png"
+              alt="VALDE 潤鋒"
+              style={{ height: 44, width: "auto", objectFit: "contain" }}
+              onError={(e) => { e.currentTarget.style.display = "none"; }}
+            />
+            <span style={{ fontSize: 13, fontWeight: 500, color: DARK, letterSpacing: 1, lineHeight: 1 }}>潤鋒</span>
+          </div>
           <div className="nav-links" style={{ display: "flex", gap: 20, fontSize: 13, color: BODY }}>
             {NAV_LINKS.map(l => (
               <a key={l} href="#" style={{ color: BODY, textDecoration: "none" }}>{l}</a>
