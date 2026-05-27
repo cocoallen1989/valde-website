@@ -1,0 +1,8 @@
+<svg width="260" height="56" viewBox="0 0 260 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#1F1F1F">
+    <path d="M8 13 L20 13 L34 45 L22 45 Z"/>
+    <path d="M35 13 L48 13 L38 45 L26 45 Z" opacity="0.96"/>
+  </g>
+  <text x="66" y="35" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="6" fill="#1F1F1F">VALDE</text>
+  <text x="178" y="35" font-family="Noto Sans TC, PingFang TC, Microsoft JhengHei, sans-serif" font-size="18" letter-spacing="3" fill="#1F1F1F">潤鋒</text>
+</svg>
