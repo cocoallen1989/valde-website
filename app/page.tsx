@@ -157,7 +157,7 @@ export default function HomePage() {
         <img
           src="/images/hero/hero-interior.jpg"
           alt="室內建材背景"
-          style={{ position: "absolute", right: 0, top: 0, width: "58%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.18 }}
+          style={{ position: "absolute", right: 0, top: 0, width: "58%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.08 }}
         />
         <div className="hero-grid" style={{ maxWidth: 1280, margin: "0 auto", padding: "64px 36px 72px", position: "relative", display: "grid", gridTemplateColumns: "5fr 7fr", gap: 40, alignItems: "flex-start" }}>
 
@@ -166,7 +166,7 @@ export default function HomePage() {
             <div style={{ display: "inline-block", border: `1px solid ${COPPER}`, color: COPPER, fontSize: 11, letterSpacing: 2, padding: "4px 12px", marginBottom: 22 }}>建材供應鏈整合平台</div>
             <h1 className="hero-title">
               建材供應鏈<br />
-              <span style={{ color: RED }}>智慧報價</span>與落地執行平台
+              <span style={{ color: RED }}>智慧報價</span>與落地交付
             </h1>
             <p style={{ color: BODY, fontSize: 15, lineHeight: 1.9, marginBottom: 36, maxWidth: 400 }}>
               上傳平面圖或立面圖後，Valde 依照空間需求與預算條件，整理可供應的建材方案，並由專人確認報價、供貨安排與案場交付。
@@ -184,7 +184,7 @@ export default function HomePage() {
           </div>
 
           {/* Right: 3 cards — clean grid, no overlap */}
-          <div className="hero-cards" style={{ display: "grid", gridTemplateColumns: "42% 1fr 28%", gap: 10, alignItems: "start" }}>
+          <div className="hero-cards" style={{ display: "grid", gridTemplateColumns: "42% 1fr 28%", gap: 10, alignItems: "start", background: "rgba(255,255,255,0.72)", backdropFilter: "blur(8px)", borderRadius: 12, padding: "16px", border: "1px solid rgba(229,224,218,0.6)", boxShadow: "0 4px 32px rgba(0,0,0,0.08)" }}>
 
             {/* Card 1: Upload */}
             <div style={{ ...s.card, padding: 16 }}>
@@ -388,7 +388,7 @@ export default function HomePage() {
               />
               <span style={{ display: "none", fontSize: 16, fontWeight: 500, color: "#fff", letterSpacing: 1, marginBottom: 16 }} id="footer-logo-fallback">VALDE 潤鋒</span>
               <p style={{ fontSize: 12, lineHeight: 1.9, color: "#CCCCCC", marginBottom: 16 }}>
-                專為設計師打造的建材供應鏈、智慧報價與落地執行平台。讓建材方案更清楚，讓報價與交付更安心。
+                專為設計師打造的建材供應鏈、智慧報價與落地交付。讓建材方案更清楚，讓報價與交付更安心。
               </p>
             </div>
 
