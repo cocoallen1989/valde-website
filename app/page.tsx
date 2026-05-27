@@ -342,11 +342,11 @@ export default function HomePage() {
           </p>
           <div className="partner-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 10 }}>
             {PARTNERS.map(logo => (
-              <div key={logo.name} style={{ background: "#fff", border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", height: 88, padding: "12px 18px", borderRadius: 3 }}>
+              <div key={logo.name} style={{ background: "#fff", border: `1px solid ${BORDER}`, display: "flex", alignItems: "center", justifyContent: "center", padding: "14px 16px", borderRadius: 3 }}>
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  style={{ maxWidth: "100%", maxHeight: 56, width: "auto", height: "auto", objectFit: "contain", display: "block" }}
+                  style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }}
                   onError={(e) => {
                     e.currentTarget.style.display = "none";
                     const ph = e.currentTarget.nextElementSibling as HTMLElement;
