@@ -183,22 +183,19 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right: 3 cards */}
-          <div className="hero-cards" style={{ position: "relative", height: 520 }}>
+          {/* Right: 3 cards — clean grid, no overlap */}
+          <div className="hero-cards" style={{ display: "grid", gridTemplateColumns: "42% 1fr 28%", gap: 10, alignItems: "start" }}>
 
-            {/* Card 1: Upload — z:3, upper-left */}
-            <div style={{ ...s.card, position: "absolute", top: 0, left: 0, width: "46%", zIndex: 3, padding: 16 }}>
-              <div style={{ fontSize: 11, color: MUTED, letterSpacing: 0.4, marginBottom: 4 }}>上傳圖面</div>
-              <div style={{ fontSize: 12, fontWeight: 600, color: DARK, marginBottom: 11 }}>支援平面圖 / 立面圖 / 參考圖片</div>
-              <div style={{ border: `1px dashed ${BORDER}`, background: SOFT, padding: 8, marginBottom: 10, borderRadius: 4 }}>
-                <img
-                  src="/images/hero/floorplan-demo.png"
-                  alt="平面圖示意"
-                  style={{ width: "100%", height: 110, objectFit: "cover", borderRadius: 2, display: "block" }}
-                />
+            {/* Card 1: Upload */}
+            <div style={{ ...s.card, padding: 16 }}>
+              <div style={{ fontSize: 11, color: MUTED, marginBottom: 4 }}>上傳圖面</div>
+              <div style={{ fontSize: 12, fontWeight: 600, color: DARK, marginBottom: 10 }}>支援平面圖 / 立面圖 / 參考圖片</div>
+              <div style={{ border: `1px dashed ${BORDER}`, background: SOFT, padding: 6, marginBottom: 10, borderRadius: 4 }}>
+                <img src="/images/hero/floorplan-demo.png" alt="平面圖示意"
+                  style={{ width: "100%", height: 96, objectFit: "cover", borderRadius: 2, display: "block" }} />
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 6, background: "#f0fdf4", padding: "7px 9px", borderRadius: 4, marginBottom: 8 }}>
-                <span style={{ color: "#16a34a", fontSize: 14 }}>✓</span>
+              <div style={{ display: "flex", alignItems: "center", gap: 6, background: "#f0fdf4", padding: "6px 9px", borderRadius: 4, marginBottom: 8 }}>
+                <span style={{ color: "#16a34a", fontSize: 13 }}>✓</span>
                 <span style={{ fontSize: 12, color: "#166534", fontWeight: 500 }}>平面圖.pdf</span>
                 <span style={{ marginLeft: "auto", fontSize: 11, color: MUTED }}>重新上傳</span>
               </div>
@@ -209,50 +206,47 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Card 2: Estimate — z:2, dominant center-right */}
-            <div style={{ ...s.card, position: "absolute", top: 28, right: 0, width: "62%", zIndex: 2, padding: 20 }}>
+            {/* Card 2: Estimate */}
+            <div style={{ ...s.card, padding: 18 }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
-                <span style={{ fontSize: 14, fontWeight: 600, color: DARK }}>建材估價概況</span>
-                <span style={{ fontSize: 10, background: RED, color: "#fff", padding: "2px 10px", borderRadius: 2 }}>初步估價</span>
+                <span style={{ fontSize: 13, fontWeight: 600, color: DARK }}>建材估價概況</span>
+                <span style={{ fontSize: 10, background: RED, color: "#fff", padding: "2px 9px", borderRadius: 2 }}>初步估價</span>
               </div>
-              <div style={{ fontSize: 11, color: MUTED, marginBottom: 6 }}>預估總價（含稅）</div>
-              <div style={{ fontSize: 34, fontWeight: 700, color: RED, marginBottom: 14, letterSpacing: "-0.02em" }}>NT$ 186,800</div>
-              <div style={{ display: "flex", gap: 28, marginBottom: 14, paddingBottom: 14, borderBottom: `1px solid ${LINE}` }}>
-                <div><div style={{ fontSize: 20, fontWeight: 600 }}>28 項</div><div style={{ fontSize: 11, color: MUTED }}>項目總數</div></div>
-                <div><div style={{ fontSize: 20, fontWeight: 600 }}>15 坪</div><div style={{ fontSize: 11, color: MUTED }}>空間總數</div></div>
+              <div style={{ fontSize: 11, color: MUTED, marginBottom: 5 }}>預估總價（含稅）</div>
+              <div style={{ fontSize: 28, fontWeight: 700, color: RED, marginBottom: 12, letterSpacing: "-0.02em" }}>NT$ 186,800</div>
+              <div style={{ display: "flex", gap: 20, marginBottom: 12, paddingBottom: 12, borderBottom: `1px solid ${LINE}` }}>
+                <div><div style={{ fontSize: 17, fontWeight: 600 }}>28 項</div><div style={{ fontSize: 11, color: MUTED }}>項目總數</div></div>
+                <div><div style={{ fontSize: 17, fontWeight: 600 }}>15 坪</div><div style={{ fontSize: 11, color: MUTED }}>空間總數</div></div>
               </div>
-              <div style={{ fontSize: 11, fontWeight: 600, color: BODY, marginBottom: 10 }}>主要建材分類預估</div>
+              <div style={{ fontSize: 11, fontWeight: 600, color: BODY, marginBottom: 8 }}>主要建材分類預估</div>
               {ESTIMATE_ITEMS.map(item => (
-                <div key={item.label} style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 6, color: MUTED }}>
+                <div key={item.label} style={{ display: "flex", justifyContent: "space-between", fontSize: 11, marginBottom: 5, color: MUTED }}>
                   <span>{item.label}</span>
                   <span style={{ color: DARK, fontWeight: 500 }}>{item.amount}</span>
                 </div>
               ))}
-              <a href="#" style={{ ...s.btnRed, width: "100%", marginTop: 14, justifyContent: "center", fontSize: 14 }}>↓ 下載完整報價 PDF</a>
+              <a href="#" style={{ ...s.btnRed, width: "100%", marginTop: 12, justifyContent: "center", fontSize: 13 }}>↓ 下載完整報價 PDF</a>
             </div>
 
-            {/* Card 3: Recommendations — z:4, far right */}
-            <div style={{ ...s.card, position: "absolute", bottom: 0, right: 0, width: "38%", zIndex: 4, padding: 14 }}>
-              <div style={{ fontSize: 12, fontWeight: 600, color: DARK, marginBottom: 12 }}>推薦建材方案</div>
+            {/* Card 3: Recommendations */}
+            <div style={{ ...s.card, padding: 13 }}>
+              <div style={{ fontSize: 12, fontWeight: 600, color: DARK, marginBottom: 10 }}>推薦建材方案</div>
               {[
-                { cat: "SPC 地板",    name: "SPC 木地板",   price: "NT$1,280/坪", thumb: "/images/products/product-floor.jpg" },
-                { cat: "衛浴設備",    name: "衛浴套裝",     price: "NT$42,900/式", thumb: "/images/products/product-bathroom.jpg" },
-                { cat: "系統櫃/櫃體", name: "系統櫃",       price: "NT$8,500/坪",  thumb: "/images/products/product-cabinet.jpg" },
+                { cat: "SPC 地板", name: "SPC 木地板", price: "NT$1,280/坪", thumb: "/images/products/product-floor.jpg" },
+                { cat: "衛浴設備", name: "衛浴套裝",   price: "NT$42,900/式", thumb: "/images/products/product-bathroom.jpg" },
+                { cat: "系統櫃",   name: "系統櫃",     price: "NT$8,500/坪",  thumb: "/images/products/product-cabinet.jpg" },
               ].map(item => (
-                <div key={item.name} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-                  <img
-                    src={item.thumb}
-                    alt={item.name}
-                    style={{ width: 44, height: 44, objectFit: "cover", borderRadius: 4, flexShrink: 0 }}
-                  />
+                <div key={item.name} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                  <img src={item.thumb} alt={item.name}
+                    style={{ width: 38, height: 38, objectFit: "cover", borderRadius: 4, flexShrink: 0 }} />
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 11, color: MUTED }}>{item.cat}</div>
-                    <div style={{ fontSize: 13, fontWeight: 500, color: DARK }}>{item.name}</div>
-                    <div style={{ fontSize: 12, color: RED, fontWeight: 500 }}>{item.price}</div>
+                    <div style={{ fontSize: 10, color: MUTED }}>{item.cat}</div>
+                    <div style={{ fontSize: 12, fontWeight: 500, color: DARK }}>{item.name}</div>
+                    <div style={{ fontSize: 11, color: RED, fontWeight: 600 }}>{item.price}</div>
                   </div>
                 </div>
               ))}
-              <div style={{ borderTop: `1px solid ${LINE}`, paddingTop: 8, fontSize: 11, color: MUTED }}>✓ 已符合您的需求與預算條件</div>
+              <div style={{ borderTop: `1px solid ${LINE}`, paddingTop: 7, fontSize: 11, color: MUTED }}>✓ 已符合您的需求與預算條件</div>
             </div>
           </div>
         </div>
