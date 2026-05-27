@@ -109,7 +109,7 @@ const s = {
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div style={{ background: "#fff", color: DARK, fontFamily: '-apple-system,"Helvetica Neue","Noto Sans TC",Arial,sans-serif', lineHeight: 1.6 }}>
+    <div style={{ background: "#fff", color: DARK, fontFamily: '"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif', lineHeight: 1.6 }}>
 
       {/* ══ NAV ══════════════════════════════════════════ */}
       <nav style={{ background: "#fff", borderBottom: `1px solid ${LINE}`, position: "sticky", top: 0, zIndex: 50, height: 80 }}>
@@ -277,7 +277,7 @@ export default function HomePage() {
 
       {/* ══ PROCESS ════════════════════════════════════════ */}
       <section style={{ padding: "68px 32px", background: "#fff", maxWidth: 1280, margin: "0 auto" }}>
-        <h2 style={{ fontFamily: "\"Noto Serif TC\", \"Songti TC\", serif", fontSize: 26, fontWeight: 400, textAlign: "center", marginBottom: 56, color: DARK }}>
+        <h2 className="section-title" style={{ marginBottom: 56 }}>
           從圖面到交付，全流程專人對接
         </h2>
         <div className="process-row" style={{ display: "flex", position: "relative" }}>
@@ -302,7 +302,7 @@ export default function HomePage() {
 
       {/* ══ PRODUCT CATEGORIES ═════════════════════════════ */}
       <section style={{ padding: "0 32px 70px", maxWidth: 1280, margin: "0 auto" }}>
-        <h2 style={{ fontFamily: "\"Noto Serif TC\", \"Songti TC\", serif", fontSize: 30, fontWeight: 500, textAlign: "center", marginBottom: 30, color: DARK }}>
+        <h2 className="section-title" style={{ marginBottom: 30 }}>
           我們提供的建材項目
         </h2>
         <div className="product-grid" style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 8 }}>
@@ -331,7 +331,7 @@ export default function HomePage() {
       {/* ══ PARTNERS ═══════════════════════════════════════ */}
       <section style={{ background: SOFT, padding: "64px 32px", borderTop: `1px solid ${LINE}` }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "\"Noto Serif TC\", \"Songti TC\", serif", fontSize: 30, fontWeight: 500, textAlign: "center", marginBottom: 10, color: DARK }}>
+          <h2 className="section-title" style={{ marginBottom: 10 }}>
             合作與供應實績
           </h2>
           <p style={{ textAlign: "center", color: MUTED, fontSize: 15, maxWidth: 620, margin: "0 auto 34px", lineHeight: 1.9 }}>
