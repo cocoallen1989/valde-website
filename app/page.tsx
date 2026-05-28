@@ -23,12 +23,12 @@ const STEPS = [
 ];
 
 const PRODUCTS = [
-  { name: "SPC 地板",      src: "/images/categories/spc-floor-example.png",      pos: "center" },
-  { name: "衛浴設備",      src: "/images/categories/bathroom-example.png",       pos: "center" },
-  { name: "廚具系統",      src: "/images/categories/kitchen-example.png",        pos: "center" },
-  { name: "系統櫃 / 櫃體", src: "/images/categories/cabinet-example.png",        pos: "center top" },
-  { name: "壁板 / 軟裝",   src: "/images/categories/wall-panel-example.png",    pos: "center" },
-  { name: "住宅配套",      src: "/images/categories/home-package-example.png",  pos: "center" },
+  { name: "SPC 地板",      src: "/images/category-cards/spc-floor.jpg",                 pos: "center" },
+  { name: "衛浴設備",      src: "/images/category-cards/bathroom.jpg",                  pos: "center" },
+  { name: "廚具系統",      src: "/images/category-cards/kitchen.jpg",                   pos: "center" },
+  { name: "系統櫃 / 櫃體", src: "/images/category-cards/cabinet.jpg",                   pos: "center" },
+  { name: "壁板 / 軟裝",   src: "/images/category-cards/wall-panel-softfurnishing.jpg", pos: "center" },
+  { name: "住宅配套",      src: "/images/category-cards/home-package.jpg",              pos: "center" },
 ];
 
 const PARTNERS = [
@@ -315,19 +315,17 @@ export default function HomePage() {
                 cursor: "pointer",
                 position: "relative",
                 overflow: "hidden",
-                backgroundImage: `url(${p.src})`,
+                backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.08)), url(${p.src})`,
                 backgroundSize: "cover",
                 backgroundPosition: p.pos,
                 display: "flex",
                 alignItems: "flex-end",
                 justifyContent: "space-between",
-                padding: "16px 18px",
-                border: "1px solid rgba(255,255,255,0.06)",
+                padding: "14px 16px",
               }}
             >
-              <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
-              <span style={{ color: "#fff", fontSize: 15, fontWeight: 600, letterSpacing: 0.2, lineHeight: 1.3, position: "relative", zIndex: 1 }}>{p.name}</span>
-              <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 18, lineHeight: 1, position: "relative", zIndex: 1 }}>›</span>
+              <span style={{ color: "#fff", fontSize: 14, fontWeight: 600, letterSpacing: 0.2, lineHeight: 1.3 }}>{p.name}</span>
+              <span style={{ color: "rgba(255,255,255,0.75)", fontSize: 18, lineHeight: 1 }}>›</span>
             </div>
           ))}
         </div>
