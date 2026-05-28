@@ -2,7 +2,7 @@
 // page.tsx — Valde 首頁
 // 所有 logo 與圖片均從 /public/logos 與 /public/images 讀取
 // 無自行生成圖片、無假 logo、無 raw code
-import { useState } from "react";
+import { useState, useRef } from "react";
 // ── 資料定義 ────────────────────────────────────────
 const NAV_LINKS = ["平台介紹", "產品分類", "解決方案", "案例實績", "關於我們"];
 
@@ -108,6 +108,23 @@ const s = {
 // ── 컴포넌트 ────────────────────────────────────────
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const uploadInputRef = useRef<HTMLInputElement>(null);
+
+  function handleDragEnter(e: React.DragEvent) { e.preventDefault(); e.stopPropagation(); setIsDragging(true); }
+  function handleDragLeave(e: React.DragEvent) { e.preventDefault(); e.stopPropagation(); setIsDragging(false); }
+  function handleDragOver(e: React.DragEvent) { e.preventDefault(); e.stopPropagation(); }
+  function handleDrop(e: React.DragEvent) {
+    e.preventDefault(); e.stopPropagation(); setIsDragging(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file) setUploadedFile(file.name);
+  }
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) setUploadedFile(file.name);
+  }
+
   return (
     <div style={{ background: "#fff", color: DARK, fontFamily: '"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif', lineHeight: 1.6 }}>
 
@@ -193,15 +210,61 @@ export default function HomePage() {
               <div style={{ ...s.card, padding: 20 }}>
                 <div style={{ fontSize: 13, fontWeight: 600, color: DARK, marginBottom: 14 }}>上傳圖面</div>
                 <div style={{ fontSize: 12, color: MUTED, marginBottom: 12 }}>支援平面圖 / 立面圖 / 參考圖片</div>
-                <div style={{ border: `1.5px dashed ${BORDER}`, background: SOFT, padding: 10, marginBottom: 14, borderRadius: 6 }}>
-                  <img src="/images/hero/floorplan-demo.png" alt="平面圖示意"
-                    style={{ width: "100%", height: 120, objectFit: "cover", borderRadius: 3, display: "block" }} />
+
+                {/* Drag & drop zone */}
+                <div
+                  onDragEnter={handleDragEnter}
+                  onDragLeave={handleDragLeave}
+                  onDragOver={handleDragOver}
+                  onDrop={handleDrop}
+                  onClick={() => uploadInputRef.current?.click()}
+                  style={{
+                    border: isDragging ? `2px dashed ${RED}` : `1.5px dashed ${BORDER}`,
+                    background: isDragging ? "rgba(158,27,31,0.04)" : SOFT,
+                    borderRadius: 6,
+                    marginBottom: 12,
+                    height: 132,
+                    cursor: "pointer",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    overflow: "hidden",
+                    transition: "border-color 0.15s, background 0.15s",
+                    position: "relative",
+                  }}
+                >
+                  {isDragging ? (
+                    <>
+                      <div style={{ fontSize: 26, marginBottom: 6 }}>📂</div>
+                      <div style={{ fontSize: 13, color: RED, fontWeight: 600 }}>放開以上傳</div>
+                    </>
+                  ) : uploadedFile ? (
+                    <img src="/images/hero/floorplan-demo.png" alt="平面圖示意"
+                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  ) : (
+                    <>
+                      <div style={{ fontSize: 24, color: MUTED, marginBottom: 6, lineHeight: 1 }}>↑</div>
+                      <div style={{ fontSize: 12, color: MUTED, textAlign: "center", lineHeight: 1.7 }}>
+                        點擊選擇或拖曳圖面檔案<br />
+                        <span style={{ fontSize: 11, color: BORDER }}>PDF · JPG · PNG</span>
+                      </div>
+                    </>
+                  )}
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 7, background: "#f0fdf4", padding: "9px 12px", borderRadius: 5, marginBottom: 10 }}>
-                  <span style={{ color: "#16a34a", fontSize: 15 }}>✓</span>
-                  <span style={{ fontSize: 13, color: "#166534", fontWeight: 500 }}>平面圖.pdf</span>
-                  <span style={{ marginLeft: "auto", fontSize: 12, color: MUTED }}>重新上傳</span>
-                </div>
+                <input ref={uploadInputRef} type="file" accept=".pdf,.jpg,.jpeg,.png" style={{ display: "none" }} onChange={handleFileChange} />
+
+                {/* Success / reset bar */}
+                {uploadedFile ? (
+                  <div style={{ display: "flex", alignItems: "center", gap: 7, background: "#f0fdf4", padding: "9px 12px", borderRadius: 5, marginBottom: 10 }}>
+                    <span style={{ color: "#16a34a", fontSize: 15 }}>✓</span>
+                    <span style={{ fontSize: 13, color: "#166534", fontWeight: 500, flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{uploadedFile}</span>
+                    <button onClick={e => { e.stopPropagation(); setUploadedFile(null); }} style={{ fontSize: 12, color: MUTED, background: "none", border: "none", cursor: "pointer", flexShrink: 0 }}>重新上傳</button>
+                  </div>
+                ) : (
+                  <div style={{ height: 10, marginBottom: 10 }} />
+                )}
+
                 <div style={{ display: "flex", gap: 5 }}>
                   {["PDF", "JPG", "PNG"].map(f => (
                     <span key={f} style={{ fontSize: 11, padding: "3px 9px", border: `1px solid ${BORDER}`, color: MUTED, borderRadius: 3 }}>{f}</span>
