@@ -23,12 +23,12 @@ const STEPS = [
 ];
 
 const PRODUCTS = [
-  { name: "SPC 地板",      color: "#5F5440", src: "/images/products/product-floor.jpg",         pos: "center" },
-  { name: "衛浴設備",      color: "#31424A", src: "/images/products/product-bathroom.jpg",      pos: "center" },
-  { name: "廚具系統",      color: "#2F3133", src: "/images/products/product-kitchen.jpg",       pos: "center" },
-  { name: "系統櫃 / 櫃體", color: "#514637", src: "/images/products/product-cabinet.jpg",       pos: "center top" },
-  { name: "壁板 / 軟裝",   color: "#46533E", src: "/images/products/product-wall-panel.jpg",   pos: "center" },
-  { name: "住宅配套",      color: "#5B484D", src: "/images/products/product-home-equipment.jpg", pos: "center" },
+  { name: "SPC 地板",      src: "/images/categories/spc-floor-example.png",      pos: "center" },
+  { name: "衛浴設備",      src: "/images/categories/bathroom-example.png",       pos: "center" },
+  { name: "廚具系統",      src: "/images/categories/kitchen-example.png",        pos: "center" },
+  { name: "系統櫃 / 櫃體", src: "/images/categories/cabinet-example.png",        pos: "center top" },
+  { name: "壁板 / 軟裝",   src: "/images/categories/wall-panel-example.png",    pos: "center" },
+  { name: "住宅配套",      src: "/images/categories/home-package-example.png",  pos: "center" },
 ];
 
 const PARTNERS = [
@@ -313,7 +313,11 @@ export default function HomePage() {
                 height: 120,
                 borderRadius: 4,
                 cursor: "pointer",
-                background: p.color,
+                position: "relative",
+                overflow: "hidden",
+                backgroundImage: `url(${p.src})`,
+                backgroundSize: "cover",
+                backgroundPosition: p.pos,
                 display: "flex",
                 alignItems: "flex-end",
                 justifyContent: "space-between",
@@ -321,8 +325,9 @@ export default function HomePage() {
                 border: "1px solid rgba(255,255,255,0.06)",
               }}
             >
-              <span style={{ color: "#fff", fontSize: 15, fontWeight: 600, letterSpacing: 0.2, lineHeight: 1.3 }}>{p.name}</span>
-              <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 18, lineHeight: 1 }}>›</span>
+              <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.45)" }} />
+              <span style={{ color: "#fff", fontSize: 15, fontWeight: 600, letterSpacing: 0.2, lineHeight: 1.3, position: "relative", zIndex: 1 }}>{p.name}</span>
+              <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 18, lineHeight: 1, position: "relative", zIndex: 1 }}>›</span>
             </div>
           ))}
         </div>
